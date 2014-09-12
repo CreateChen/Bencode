@@ -1,0 +1,4 @@
+F:\Bencode\Bencode\bin\Debug\Bencode.dll
+F:\Bencode\Bencode\bin\Debug\Bencode.pdb
+F:\Bencode\Bencode\obj\Debug\Bencode.dll
+F:\Bencode\Bencode\obj\Debug\Bencode.pdb

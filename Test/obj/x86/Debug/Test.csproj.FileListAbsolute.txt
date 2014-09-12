@@ -1,0 +1,7 @@
+F:\Bencode\Test\bin\Debug\Test.exe
+F:\Bencode\Test\bin\Debug\Test.pdb
+F:\Bencode\Test\obj\x86\Debug\Test.exe
+F:\Bencode\Test\obj\x86\Debug\Test.pdb
+F:\Bencode\Test\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache
+F:\Bencode\Test\bin\Debug\Bencode.dll
+F:\Bencode\Test\bin\Debug\Bencode.pdb
