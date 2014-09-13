@@ -18,13 +18,13 @@ You can start using Bencode right away by installing the [NuGet package](https:/
 Gettging Started
 ----------------------
 
-First import Bencode namespace
+Import Bencode namespace first:
 
 ```c#
 using Bencode;
 ```
 
-Bencode fuctions are in the **BencodeUtility** class.
+Bencode functions are in the **BencodeUtility** class.
 
 In order to encode objects to a byte array:
 
