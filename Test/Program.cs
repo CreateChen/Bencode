@@ -12,12 +12,13 @@ namespace Test
         {
             //Test encode function
             Dictionary<string, object> dic = new Dictionary<string, Object>
-                            {
-                                {"nick", "Create Chen"},
-                                {"blog","http://www.cnblogs.com/technology"},
-                                {"interests", new List<object> {"coding", "basketball"}}
-                            };
+                {
+                    {"nick", "Create Chen"},
+                    {"blog","http://www.cnblogs.com/technology"},
+                    {"interests", new List<object> {"coding", "basketball"}}
+                };
             byte[] bytes = BencodeUtility.Encode(dic).ToArray();
+
             string str = Encoding.ASCII.GetString(bytes);
             Console.WriteLine(str);
 

@@ -156,7 +156,7 @@ namespace Bencode
 
         private static List<object> DecodeList(byte[] data, ref Int32 offset)
         {
-            var result = new List<object>();
+            List<object> result = new List<object>();
             while (data[offset] != 'e')
             {
                 result.Add(DecodeObject(data, ref offset));
@@ -179,10 +179,10 @@ namespace Bencode
             if (dic != null)
             {
                 yield return (byte)'d';
-                foreach (var pair in dic)
+                foreach (KeyValuePair<string, object> pair in dic)
                 {
                     byte[] bytes = GetAscii(pair.Key.Length + ":" + pair.Key);
-                    foreach (var b in bytes.Concat(Encode(pair.Value)))
+                    foreach (Byte b in bytes.Concat(Encode(pair.Value)))
                     {
                         yield return b;
                     }
@@ -195,7 +195,7 @@ namespace Bencode
             if (int32 != null)
             {
                 byte[] bytes = GetAscii("i" + int32.Value + "e");
-                foreach (var b in bytes)
+                foreach (Byte b in bytes)
                 {
                     yield return b;
                 }
@@ -206,7 +206,29 @@ namespace Bencode
             if (int64 != null)
             {
                 byte[] bytes = GetAscii("i" + int64.Value + "e");
-                foreach (var b in bytes)
+                foreach (Byte b in bytes)
+                {
+                    yield return b;
+                }
+                yield break;
+            }
+
+            string str = obj as string;
+            if (str != null)
+            {
+                byte[] bytes = GetAscii(str.Length + ":" + str);
+                foreach (Byte b in bytes)
+                {
+                    yield return b;
+                }
+                yield break;
+            }
+
+            byte[] byteArr = obj as byte[];
+            if (byteArr != null)
+            {
+                byte[] bytes = GetAscii(byteArr.Length + ":");
+                foreach (Byte b in bytes.Concat(byteArr))
                 {
                     yield return b;
                 }
@@ -217,25 +239,14 @@ namespace Bencode
             if (list != null)
             {
                 yield return (byte)'l';
-                foreach (var item in list)
+                foreach (object item in list)
                 {
-                    foreach (var b in Encode(item))
+                    foreach (Byte b in Encode(item))
                     {
                         yield return b;
                     }
                 }
                 yield return (byte)'e';
-                yield break;
-            }
-
-            string str = obj as string;
-            if (str != null)
-            {
-                byte[] bytes = GetAscii(str.Length + ":" + str);
-                foreach (var b in bytes)
-                {
-                    yield return b;
-                }
             }
         }
 
